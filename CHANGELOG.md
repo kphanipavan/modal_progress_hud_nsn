@@ -1,3 +1,7 @@
+##0.1.0-nullsafety-0
+
+-   Implemented Sound Null Safety 💪
+
 ## 0.0.1
 
-* TODO: Describe initial release.
+-   Inported code from the parent package, https://github.com/mmcc007/modal_progress_hud

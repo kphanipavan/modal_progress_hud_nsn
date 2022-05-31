@@ -1,3 +1,11 @@
+## 0.2.0
+
+-   Added support for other platforms.
+
+## 0.1.0-nullsafety-2
+
+-   Downgraded dart and Flutter SDK version.
+
 ## 0.1.0-nullsafety-1
 
 -   Readme fixed.

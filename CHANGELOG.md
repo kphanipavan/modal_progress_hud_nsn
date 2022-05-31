@@ -1,3 +1,9 @@
+## 0.2.1
+
+- Minor fixes in README file.
+- Added dartdoc strings.
+- Fixed most issues to follow dart guidelines.
+
 ## 0.2.0
 
 -   Added support for other platforms.

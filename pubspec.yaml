@@ -1,6 +1,6 @@
 name: modal_progress_hud_nsn
 description: A modal progress indicator widget with Sound Null Safety. A fork of https://github.com/mmcc007/modal_progress_hud
-version: 0.2.0
+version: 0.2.1
 #author: Phani Pavan K
 homepage: https://github.com/kphanipavan/modal_progress_hud_nsn
 

@@ -6,32 +6,32 @@ import 'package:flutter/material.dart';
 /// Wrap around any widget that makes an async call to show a modal progress
 /// indicator while the async call is in progress.
 ///
-/// The progress indicator can be turned on or off using [inAsyncCall]
-///
-/// The progress indicator defaults to a [CircularProgressIndicator] but can be
-/// any kind of widget
-///
-/// The progress indicator can be positioned using [offset] otherwise it is
-/// centered
-///
-/// The modal barrier can be dismissed using [dismissible]
-///
-/// The color of the modal barrier can be set using [color]
-///
-/// The opacity of the modal barrier can be set using [opacity]
-///
 /// HUD=Heads Up Display
 ///
 class ModalProgressHUD extends StatelessWidget {
+  /// A required [bool]to toggle the loading animation.
   final bool inAsyncCall;
+
+  /// A [double] value which states how opaque the loading overlay should be, defaults to 0.3
   final double opacity;
+
+  /// A [Color] object which is assigned to the loading barrier, defaults to grey
   final Color color;
+
+  /// A [Widget] which is shown at the center of the modal loading barrier,
+  /// defaults to the standard android spinny animation.
   final Widget progressIndicator;
+
+  /// An [Offset] object which is applied to the [progressIndicator] when specified.
   final Offset? offset;
+
+  /// A [bool] value which sets the `loading screen can be dismissible by tapping on the loading screen` rule.
   final bool dismissible;
+
+  /// A [Widget] which should be the the widget to be shown behind the loading barrier.
   final Widget child;
 
-  ModalProgressHUD({
+  const ModalProgressHUD({
     Key? key,
     required this.inAsyncCall,
     this.opacity = 0.3,
@@ -47,9 +47,9 @@ class ModalProgressHUD extends StatelessWidget {
     if (!inAsyncCall) return child;
 
     Widget layOutProgressIndicator;
-    if (offset == null)
+    if (offset == null) {
       layOutProgressIndicator = Center(child: progressIndicator);
-    else {
+    } else {
       layOutProgressIndicator = Positioned(
         child: progressIndicator,
         left: offset!.dx,
@@ -57,11 +57,11 @@ class ModalProgressHUD extends StatelessWidget {
       );
     }
 
-    return new Stack(
+    return Stack(
       children: [
         child,
-        new Opacity(
-          child: new ModalBarrier(dismissible: dismissible, color: color),
+        Opacity(
+          child: ModalBarrier(dismissible: dismissible, color: color),
           opacity: opacity,
         ),
         layOutProgressIndicator,

@@ -1,3 +1,8 @@
+## 0.3.0
+
+- Added blur option for background blur
+- Attempted a fix for missed dart formatting
+
 ## 0.2.1
 
 - Minor fixes in README file.

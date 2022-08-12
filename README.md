@@ -4,13 +4,13 @@ A simple widget wrapper to enable modal progress HUD (a modal progress indicator
 
 [![pub package](https://img.shields.io/pub/v/modal_progress_hud_nsn.svg)](https://pub.dartlang.org/packages/modal_progress_hud_nsn)
 
-Inspired by [this](https://codingwithjoe.com/flutter-how-to-build-a-modal-progress-indicator/) article.
+~~Inspired by [this](https://codingwithjoe.com/flutter-how-to-build-a-modal-progress-indicator/) article.~~ Link broken, Dont click.
 
 A fork of [this](https://github.com/mmcc007/modal_progress_hud) with support for Null Safety.
 
 ## Demo
 
-![Demo](https://raw.githubusercontent.com/mmcc007/modal_progress_hud/master/modal_progress_hud.gif)
+![Demo](https://raw.githubusercontent.com/kphanipavan/modal_progress_hud/master/modal_progress_hud.gif)
 
 _See example for details_
 
@@ -20,7 +20,7 @@ Add the package to your `pubspec.yml` file.
 
 ```yml
 dependencies:
-    modal_progress_hud_nsn: ^0.2.1
+    modal_progress_hud_nsn: ^0.3.0
 ```
 
 Next, import the library into your widget.
@@ -59,8 +59,16 @@ ModalProgressHUD(
   progressIndicator: CircularProgressIndicator,
   offset: double
   dismissible: bool,
+  blur: double,
 );
 ```
+
+## Similar Packages
+
+* [modal_progress_hud](https://pub.dev/packages/modal_progress_hud) : Original
+* [modal_progress_hud_alt](https://pub.dev/packages/modal_progress_hud_alt) : Alternative
+* [blurry_modal_progress_hud](https://pub.dev/packages/blurry_modal_progress_hud) : With blur
+* [flutter_progress_hud](https://pub.dev/packages/flutter_progress_hud) : With fade
 
 ## Example
 
@@ -138,7 +146,7 @@ for a complete sample app using the modal progress HUD. Included in the
 example is a method for using a form's validators while making async
 calls (see [flutter/issues/9688](https://github.com/flutter/flutter/issues/9688) for details).
 
-### Issues and feedback
+## Issues and feedback
 
 Please file [issues](https://github.com/kphanipavan/modal_progress_hud_nsn/issues/new)
 to send feedback or report a bug. Thank you!

@@ -43,6 +43,7 @@ class _LoginPageState extends State<LoginPage> {
   String? _username;
   String? _password;
   bool _isLoggedIn = false;
+  double bur = 0;
 
   // validate user name
   String? _validateUserName(String? userName) {
@@ -135,13 +136,16 @@ class _LoginPageState extends State<LoginPage> {
         inAsyncCall: _isInAsyncCall,
         // demo of some additional parameters
         opacity: 0.5,
+        blur: bur,
         progressIndicator: CircularProgressIndicator(),
       ),
     );
   }
 
   Widget buildLoginForm(BuildContext context) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final TextTheme textTheme = Theme
+        .of(context)
+        .textTheme;
     // run the validators on reload to process async results
     _loginFormKey.currentState?.validate();
     return Form(
@@ -182,16 +186,25 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.all(8.0),
             child: _isLoggedIn
                 ? Text(
-                    'Login successful!',
-                    key: Key('loggedIn'),
-                    style: TextStyle(fontSize: 20.0),
-                  )
+              'Login successful!',
+              key: Key('loggedIn'),
+              style: TextStyle(fontSize: 20.0),
+            )
                 : Text(
-                    'Not logged in',
-                    key: Key('notLoggedIn'),
-                    style: TextStyle(fontSize: 20.0),
-                  ),
+              'Not logged in',
+              key: Key('notLoggedIn'),
+              style: TextStyle(fontSize: 20.0),
+            ),
           ),
+          Slider(min: 0,
+            max: 10,
+            value: bur,
+            divisions: 100,
+            onChanged: (val) {
+              setState(() {
+                bur = val;
+              });
+            },),
         ],
       ),
     );

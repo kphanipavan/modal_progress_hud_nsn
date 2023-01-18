@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.15)
-set(PROJECT_NAME "modal_progress_bar_hud_nsn")
+set(PROJECT_NAME "modal_progress_hud_nsn")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 # This value is used when generating builds using this plugin, so it must
 # not be changed
-set(PLUGIN_NAME "modal_progress_bar_hud_nsn_plugin")
+set(PLUGIN_NAME "modal_progress_hud_nsn_plugin")
 
 add_library(${PLUGIN_NAME} SHARED
-  "modal_progress_bar_hud_nsn_plugin.cpp"
+  "modal_progress_hud_nsn_plugin.cpp"
 )
 apply_standard_settings(${PLUGIN_NAME})
 set_target_properties(${PLUGIN_NAME} PROPERTIES
@@ -18,7 +18,7 @@ target_include_directories(${PLUGIN_NAME} INTERFACE
 target_link_libraries(${PLUGIN_NAME} PRIVATE flutter flutter_wrapper_plugin)
 
 # List of absolute paths to libraries that should be bundled with the plugin
-set(modal_progress_bar_hud_nsn_bundled_libraries
+set(modal_progress_hud_nsn_bundled_libraries
   ""
   PARENT_SCOPE
 )

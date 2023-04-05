@@ -1,7 +1,14 @@
-library modal_progress_hud;
+library modal_progress_hud_nsn;
 
-import 'package:flutter/material.dart';
-import 'dart:ui';
+import "modal_progress_hud_nsn_platform_interface.dart";
+import "package:flutter/material.dart";
+import "dart:ui";
+
+class ModalProgressHudNsn {
+  Future<String?> getPlatformVersion() {
+    return ModalProgressHudNsnPlatform.instance.getPlatformVersion();
+  }
+}
 
 ///
 /// Wrap around any widget that makes an async call to show a modal progress
@@ -32,7 +39,7 @@ class ModalProgressHUD extends StatelessWidget {
   /// A [Widget] which should be the the widget to be shown behind the loading barrier.
   final Widget child;
 
-  /// A [double] value specifying the amount of background blur of the progress.
+  /// A [double] value specifying the amount of background blur when progress hud is active.
   final double blur;
 
   const ModalProgressHUD({
@@ -56,9 +63,9 @@ class ModalProgressHUD extends StatelessWidget {
       layOutProgressIndicator = Center(child: progressIndicator);
     } else {
       layOutProgressIndicator = Positioned(
-        child: progressIndicator,
         left: offset!.dx,
         top: offset!.dy,
+        child: progressIndicator,
       );
     }
 
@@ -68,8 +75,8 @@ class ModalProgressHUD extends StatelessWidget {
         BackdropFilter(
           filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
           child: Opacity(
-            child: ModalBarrier(dismissible: dismissible, color: color),
             opacity: opacity,
+            child: ModalBarrier(dismissible: dismissible, color: color),
           ),
         ),
         layOutProgressIndicator,

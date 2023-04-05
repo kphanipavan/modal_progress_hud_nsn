@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
 class LoginPage extends StatefulWidget {
   final VoidCallback _onSignIn;
 
-  LoginPage({required onSignIn})
+  const LoginPage({required onSignIn})
       : assert(onSignIn != null),
         _onSignIn = onSignIn;
 
@@ -115,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
       _loginFormKey.currentState!.save();
 
       // dismiss keyboard during async call
-      FocusScope.of(context).requestFocus(new FocusNode());
+      FocusScope.of(context).requestFocus(FocusNode());
 
       // start the modal progress HUD
       setState(() {
@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
       });
 
       // Simulate a service call
-      Future.delayed(Duration(seconds: 1), () {
+      Future.delayed(const Duration(seconds: 1), () {
         final _accountUsername = 'username1';
         final _accountPassword = 'password1';
         _isLoggedIn = false;
@@ -134,9 +134,10 @@ class _LoginPageState extends State<LoginPage> {
               // username and password are correct
               _isInvalidAsyncPass = false;
               _isLoggedIn = true;
-            } else
+            } else {
               // username is correct, but password is incorrect
               _isInvalidAsyncPass = true;
+            }
           } else {
             // incorrect username and have not checked password result
             _isInvalidAsyncUser = true;
@@ -146,9 +147,10 @@ class _LoginPageState extends State<LoginPage> {
           // stop the modal progress HUD
           _isInAsyncCall = false;
         });
-        if (_isLoggedIn)
+        if (_isLoggedIn) {
           // do something
           widget._onSignIn();
+        }
       });
     }
   }
@@ -157,23 +159,23 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Modal Progress HUD Demo'),
+        title: const Text('Modal Progress HUD Demo'),
         backgroundColor: Colors.blue,
       ),
       // display modal progress HUD (heads-up display, or indicator)
       // when in async call
       body: ModalProgressHUD(
+        inAsyncCall: _isInAsyncCall,
+        // demo of some additional parameters
+        opacity: 0.5,
+        blur: bur,
+        progressIndicator: const CircularProgressIndicator(),
         child: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(16.0),
             child: buildLoginForm(context),
           ),
         ),
-        inAsyncCall: _isInAsyncCall,
-        // demo of some additional parameters
-        opacity: 0.5,
-        blur: bur,
-        progressIndicator: CircularProgressIndicator(),
       ),
     );
   }
@@ -183,16 +185,17 @@ class _LoginPageState extends State<LoginPage> {
     // run the validators on reload to process async results
     _loginFormKey.currentState?.validate();
     return Form(
-      key: this._loginFormKey,
+      key: _loginFormKey,
       child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              key: Key('username'),
-              decoration: InputDecoration(
+              key: const Key('username'),
+              decoration: const InputDecoration(
                   hintText: 'enter username', labelText: 'User Name'),
-              style: TextStyle(fontSize: 20.0, color: textTheme.button!.color),
+              style:
+                  TextStyle(fontSize: 20.0, color: textTheme.labelLarge!.color),
               validator: _validateUserName,
               onSaved: (value) => _username = value,
             ),
@@ -200,11 +203,12 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              key: Key('password'),
+              key: const Key('password'),
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: 'enter password', labelText: 'Password'),
-              style: TextStyle(fontSize: 20.0, color: textTheme.button!.color),
+              style:
+                  TextStyle(fontSize: 20.0, color: textTheme.labelLarge!.color),
               validator: _validatePassword,
               onSaved: (value) => _password = value,
             ),
@@ -213,25 +217,25 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.all(32.0),
             child: ElevatedButton(
               onPressed: _submit,
-              child: Text('Login'),
+              child: const Text('Login'),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: _isLoggedIn
-                ? Text(
+                ? const Text(
                     'Login successful!',
                     key: Key('loggedIn'),
                     style: TextStyle(fontSize: 20.0),
                   )
-                : Text(
+                : const Text(
                     'Not logged in',
                     key: Key('notLoggedIn'),
                     style: TextStyle(fontSize: 20.0),
                   ),
           ),
-          Divider(),
-          Text("Set amount of blur:", style: TextStyle(fontSize: 20)),
+          const Divider(),
+          const Text("Set amount of blur:", style: TextStyle(fontSize: 20)),
           Slider(
             min: 0,
             max: 10,

@@ -1,5 +1,5 @@
 group 'boi.walle.modal_progress_hud_nsn'
-version '1.0-SNAPSHOT'
+version '0.4.0'
 
 buildscript {
     ext.kotlin_version = '1.7.10'

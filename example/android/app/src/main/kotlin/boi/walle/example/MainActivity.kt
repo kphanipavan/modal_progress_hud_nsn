@@ -1,4 +1,4 @@
-package com.walle.modal_progress_hud_nsn_example
+package boi.walle.example
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,21 +1,56 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:flutter/services.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String _platformVersion = 'Unknown';
+  final _modalProgressHudNsnPlugin = ModalProgressHudNsn();
+
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+  }
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  Future<void> initPlatformState() async {
+    String platformVersion;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    // We also handle the message potentially returning null.
+    try {
+      platformVersion = await _modalProgressHudNsnPlugin.getPlatformVersion() ??
+          'Unknown platform version';
+    } on PlatformException {
+      platformVersion = 'Failed to get platform version.';
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      _platformVersion = platformVersion;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: LoginPage(
-        onSignIn: () => print('login successful!'),
-      ),
-    );
+        home: LoginPage(
+            onSignIn: () => print("Login Successful, on $_platformVersion")));
   }
 }
 
@@ -91,6 +126,7 @@ class _LoginPageState extends State<LoginPage> {
       Future.delayed(Duration(seconds: 1), () {
         final _accountUsername = 'username1';
         final _accountPassword = 'password1';
+        _isLoggedIn = false;
         setState(() {
           if (_username == _accountUsername) {
             _isInvalidAsyncUser = false;
@@ -143,9 +179,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget buildLoginForm(BuildContext context) {
-    final TextTheme textTheme = Theme
-        .of(context)
-        .textTheme;
+    final TextTheme textTheme = Theme.of(context).textTheme;
     // run the validators on reload to process async results
     _loginFormKey.currentState?.validate();
     return Form(
@@ -186,17 +220,20 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.all(8.0),
             child: _isLoggedIn
                 ? Text(
-              'Login successful!',
-              key: Key('loggedIn'),
-              style: TextStyle(fontSize: 20.0),
-            )
+                    'Login successful!',
+                    key: Key('loggedIn'),
+                    style: TextStyle(fontSize: 20.0),
+                  )
                 : Text(
-              'Not logged in',
-              key: Key('notLoggedIn'),
-              style: TextStyle(fontSize: 20.0),
-            ),
+                    'Not logged in',
+                    key: Key('notLoggedIn'),
+                    style: TextStyle(fontSize: 20.0),
+                  ),
           ),
-          Slider(min: 0,
+          Divider(),
+          Text("Set amount of blur:", style: TextStyle(fontSize: 20)),
+          Slider(
+            min: 0,
             max: 10,
             value: bur,
             divisions: 100,
@@ -204,7 +241,8 @@ class _LoginPageState extends State<LoginPage> {
               setState(() {
                 bur = val;
               });
-            },),
+            },
+          ),
         ],
       ),
     );

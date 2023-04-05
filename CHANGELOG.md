@@ -1,3 +1,9 @@
+## 0.4.0
+
+- Fixed #6
+- Updated to work with Flutter 3.7.9
+
+
 ## 0.3.0
 
 - Added blur option for background blur

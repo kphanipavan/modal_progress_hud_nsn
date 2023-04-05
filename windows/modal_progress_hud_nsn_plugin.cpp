@@ -1,4 +1,4 @@
-#include "include/modal_progress_hud_nsn/modal_progress_hud_nsn_plugin.h"
+#include "modal_progress_hud_nsn_plugin.h"
 
 // This must be included before many other Windows headers.
 #include <windows.h>
@@ -10,26 +10,10 @@
 #include <flutter/plugin_registrar_windows.h>
 #include <flutter/standard_method_codec.h>
 
-#include <map>
 #include <memory>
 #include <sstream>
 
-namespace {
-
-class ModalProgressHudNsnPlugin : public flutter::Plugin {
- public:
-  static void RegisterWithRegistrar(flutter::PluginRegistrarWindows *registrar);
-
-  ModalProgressHudNsnPlugin();
-
-  virtual ~ModalProgressHudNsnPlugin();
-
- private:
-  // Called when a method is called on this plugin's channel from Dart.
-  void HandleMethodCall(
-      const flutter::MethodCall<flutter::EncodableValue> &method_call,
-      std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
-};
+namespace modal_progress_hud_nsn {
 
 // static
 void ModalProgressHudNsnPlugin::RegisterWithRegistrar(
@@ -72,11 +56,4 @@ void ModalProgressHudNsnPlugin::HandleMethodCall(
   }
 }
 
-}  // namespace
-
-void ModalProgressHudNsnPluginRegisterWithRegistrar(
-    FlutterDesktopPluginRegistrarRef registrar) {
-  ModalProgressHudNsnPlugin::RegisterWithRegistrar(
-      flutter::PluginRegistrarManager::GetInstance()
-          ->GetRegistrar<flutter::PluginRegistrarWindows>(registrar));
-}
+}  // namespace modal_progress_hud_nsn

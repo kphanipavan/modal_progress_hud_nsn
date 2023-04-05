@@ -1,4 +1,4 @@
-# modal_progress_hud
+# modal_progress_hud(_nsn)
 
 A simple widget wrapper to enable modal progress HUD (a modal progress indicator, HUD = Heads Up Display)
 
@@ -10,7 +10,7 @@ A fork of [this](https://github.com/mmcc007/modal_progress_hud) with support for
 
 ## Demo
 
-![Demo](https://raw.githubusercontent.com/kphanipavan/modal_progress_hud/master/modal_progress_hud.gif)
+![Demo](https://raw.githubusercontent.com/kphanipavan/modal_progress_hud_nsn/master/modal_progress_hud.gif)
 
 _See example for details_
 
@@ -20,7 +20,7 @@ Add the package to your `pubspec.yml` file.
 
 ```yml
 dependencies:
-    modal_progress_hud_nsn: ^0.3.0
+    modal_progress_hud_nsn: ^0.4.0
 ```
 
 Next, import the library into your widget.

@@ -1,6 +1,6 @@
 ## 0.4.0
 
-- Fixed #6
+- Fixed ![#6](https://github.com/kphanipavan/modal_progress_hud_nsn/issues/6)
 - Updated to work with Flutter 3.7.9
 
 

@@ -10,7 +10,7 @@ A fork of [this](https://github.com/mmcc007/modal_progress_hud) with support for
 
 ## Demo
 
-![Demo](https://raw.githubusercontent.com/kphanipavan/modal_progress_hud_nsn/master/modal_progress_hud.gif)
+![Demo](https://raw.githubusercontent.com/kphanipavan/modal_progress_hud_nsn/master/demo.mp4)
 
 _See example for details_
 

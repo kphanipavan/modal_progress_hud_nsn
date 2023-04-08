@@ -8,7 +8,8 @@ abstract class ModalProgressHudNsnPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static ModalProgressHudNsnPlatform _instance = MethodChannelModalProgressHudNsn();
+  static ModalProgressHudNsnPlatform _instance =
+      MethodChannelModalProgressHudNsn();
 
   /// The default instance of [ModalProgressHudNsnPlatform] to use.
   ///

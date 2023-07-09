@@ -56,8 +56,6 @@ class ModalProgressHUD extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!inAsyncCall) return child;
-
     Widget layOutProgressIndicator;
     if (offset == null) {
       layOutProgressIndicator = Center(child: progressIndicator);
@@ -72,14 +70,16 @@ class ModalProgressHUD extends StatelessWidget {
     return Stack(
       children: [
         child,
-        BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-          child: Opacity(
-            opacity: opacity,
-            child: ModalBarrier(dismissible: dismissible, color: color),
+        if (inAsyncCall) ...[
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+            child: Opacity(
+              opacity: opacity,
+              child: ModalBarrier(dismissible: dismissible, color: color),
+            ),
           ),
-        ),
-        layOutProgressIndicator,
+          layOutProgressIndicator,
+        ],
       ],
     );
   }

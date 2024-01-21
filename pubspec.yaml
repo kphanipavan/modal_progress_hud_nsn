@@ -5,35 +5,16 @@ version: 0.4.0
 homepage: https://github.com/kphanipavan/modal_progress_hud_nsn
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
-  flutter: ">=2.5.0"
+  sdk: '>=3.2.5 <4.0.0'
+  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_web_plugins:
-    sdk: flutter
-  plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 flutter:
-  plugin:
-    platforms:
-      android:
-        package: boi.walle.modal_progress_hud_nsn
-        pluginClass: ModalProgressHudNsnPlugin
-      ios:
-        pluginClass: ModalProgressHudNsnPlugin
-      linux:
-        pluginClass: ModalProgressHudNsnPlugin
-      macos:
-        pluginClass: ModalProgressHudNsnPlugin
-      windows:
-        pluginClass: ModalProgressHudNsnPluginCApi
-      web:
-        pluginClass: ModalProgressHudNsnWeb
-        fileName: modal_progress_hud_nsn_web.dart

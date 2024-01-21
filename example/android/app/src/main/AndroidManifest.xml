@@ -1,6 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="boi.walle.modal_progress_hud_nsn_example">
-   <application
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
         android:label="modal_progress_hud_nsn_example"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import "dart:io" show Platform;
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
-  final _modalProgressHudNsnPlugin = ModalProgressHudNsn();
 
   @override
   void initState() {
@@ -30,8 +30,8 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion = await _modalProgressHudNsnPlugin.getPlatformVersion() ??
-          'Unknown platform version';
+      platformVersion =
+          await Platform.operatingSystem ?? 'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -50,7 +50,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: LoginPage(
-            onSignIn: () => print("Login Successful, on $_platformVersion")));
+            onSignIn: () =>
+                print("Login Successful, on $_platformVersion platform")));
   }
 }
 

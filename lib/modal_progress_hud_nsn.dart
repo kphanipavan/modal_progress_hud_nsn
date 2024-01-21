@@ -1,14 +1,7 @@
 library modal_progress_hud_nsn;
 
-import "modal_progress_hud_nsn_platform_interface.dart";
 import "package:flutter/material.dart";
 import "dart:ui";
-
-class ModalProgressHudNsn {
-  Future<String?> getPlatformVersion() {
-    return ModalProgressHudNsnPlatform.instance.getPlatformVersion();
-  }
-}
 
 ///
 /// Wrap around any widget that makes an async call to show a modal progress

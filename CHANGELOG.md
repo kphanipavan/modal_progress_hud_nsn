@@ -1,3 +1,7 @@
+## 0.5.0
+
+- Ported the plugin to a package.
+
 ## 0.4.0
 
 - Fixed [#6](https://github.com/kphanipavan/modal_progress_hud_nsn/issues/6)

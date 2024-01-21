@@ -13,7 +13,7 @@ Add the `modal_progress_hud_nsn` to dependencies in `pubspec.yaml`.
 
 ```yml
 dependencies:
-    modal_progress_hud_nsn: ^0.4.0
+    modal_progress_hud_nsn: ^0.5.0
 ```
 
 Next, import the library into your app.

@@ -1,3 +1,7 @@
+## 0.5.1
+
+- Fix minimum dart version.
+
 ## 0.5.0
 
 - Ported the plugin to a package.

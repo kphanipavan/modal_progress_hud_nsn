@@ -13,7 +13,7 @@ Add the `modal_progress_hud_nsn` to dependencies in `pubspec.yaml`.
 
 ```yml
 dependencies:
-    modal_progress_hud_nsn: ^0.5.0
+    modal_progress_hud_nsn: ^0.5.1
 ```
 
 Next, import the library into your app.
@@ -150,4 +150,4 @@ calls (see [flutter/issues/9688](https://github.com/flutter/flutter/issues/9688)
 ## Issues and feedback
 
 Please file [issues](https://github.com/kphanipavan/modal_progress_hud_nsn/issues/new)
-to send feedback or report a bug. Thank you!
+to send feedback, request features or report a bug. Thank you!

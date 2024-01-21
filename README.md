@@ -68,7 +68,8 @@ ModalProgressHUD(
 * [modal_progress_hud](https://pub.dev/packages/modal_progress_hud) : Original
 * [modal_progress_hud_alt](https://pub.dev/packages/modal_progress_hud_alt) : Alternative
 * [blurry_modal_progress_hud](https://pub.dev/packages/blurry_modal_progress_hud) : With blur
-* [flutter_progress_hud](https://pub.dev/packages/flutter_progress_hud) : With fade
+* [flutter_progress_hud](https://pub.dev/packages/flutter_progress_hud) : Light weight and with fade
+* [loading_overlay](https://pub.dev/packages/loading_overlay) : Another fork of original with fade
 
 ## Example
 
